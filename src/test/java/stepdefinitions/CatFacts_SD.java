@@ -4,7 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pages.CatFacts;
@@ -13,15 +13,8 @@ import utilities.ConfigReader;
 import static io.restassured.RestAssured.baseURI;
 
 public class CatFacts_SD {
-    private static final Logger logger = LogManager.getLogger(CatFacts_SD.class);
 
-    public void exampleMethod() {
-        logger.debug("Debug log mesajı");
-        logger.info("Info log mesajı");
-        logger.warn("Warning log mesajı");
-        logger.error("Error log mesajı");
-        logger.fatal("Fatal log mesajı");
-    }
+   Logger logger = LogManager.getLogger(CatFacts_SD.class.getName());
 
     static String url= ConfigReader.getProperty("url");
     CatFacts cf = new CatFacts();
@@ -51,7 +44,6 @@ public class CatFacts_SD {
     public void verifiesContentType(String contentType) {
 
         if (logger.isTraceEnabled()) {
-            // TRACE seviyesi etkinse ekstra ayrıntıları kaydet
             logger.trace("Ekstra ayrıntılar burada...");
         }
 
