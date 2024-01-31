@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.PropertyConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pages.CatFacts;
@@ -14,7 +13,7 @@ import static io.restassured.RestAssured.baseURI;
 
 public class CatFacts_SD {
 
-   Logger logger = LogManager.getLogger(CatFacts_SD.class.getName());
+    private static final Logger logger = LogManager.getLogger(CatFacts_SD.class);
 
     static String url= ConfigReader.getProperty("url");
     CatFacts cf = new CatFacts();
@@ -28,8 +27,6 @@ public class CatFacts_SD {
 
     @When("GET request is send with {string} endpoint")
     public void getRequestIsSendWithEndpoint(String endpoint) {
-
-        logger.warn("An unexpected situation occurred. Details are here:");
         logger.info("user get Request Is Send With Endpoint");
         cf.getListOf(url, endpoint);
     }
